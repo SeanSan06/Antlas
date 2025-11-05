@@ -1,0 +1,9 @@
+#header-area {
+    display: flex;
+    
+}
+
+h1 {
+    font-size: 100px;
+    color: black;
+}
