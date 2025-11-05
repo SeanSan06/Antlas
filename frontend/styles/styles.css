@@ -19,25 +19,27 @@ body {
     justify-content: space-around;
     align-items: center;
 
-    background-color: whitesmoke;
+    background-color: rgb(37, 87, 153);
 }
 
 #header-nav-area p {
     display: flex;
     flex-direction: row;
     gap: 16px;
-    
-    color: black;
-    font-size: larger;
+    margin: 8px;
+
+    color: rgb(255, 255, 255);
+    font-size: 32px;
 }
 
 #tabs-nav-bar {
     display: flex;
     flex-direction: row;
     gap: 16px;
+    margin: 8px;
 
     color: black;
-    font-size: larger;
+    font-size: 32px;
 }
 
 /* Hero area */
