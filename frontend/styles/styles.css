@@ -20,6 +20,8 @@ body {
     align-items: center;
 
     background-color: rgb(37, 87, 153);
+    border: 1;
+    box-shadow: 0 4px 8px rgba(37, 87, 153, 0.75);
 }
 
 #header-nav-area p {
