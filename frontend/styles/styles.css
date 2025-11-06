@@ -3,6 +3,7 @@ html {
     height: 100%;
 
     background-color: black;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -11,7 +12,7 @@ body {
     flex-direction: column;
     margin: 0px;
 
-    background-color: lightgray;
+    background-color: white;
 }
 
 /* Header/navigation area */
@@ -34,6 +35,7 @@ body {
 
     color: rgb(255, 255, 255);
     font-size: 32px;
+    font-family: "Poppins", sans-serif;
 }
 
 #tabs-nav-bar {
@@ -44,6 +46,7 @@ body {
 
     color: black;
     font-size: 32px;
+    font-family: "Poppins", sans-serif;
 }
 
 #tabs-nav-bar #home a {
@@ -62,15 +65,116 @@ body {
 }
 
 /* Hero area */
-h1{
-    font-size: 70px;
-    color: white
+#hero-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 208px;
+
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgb(255, 255, 255)), url("../images/temp_park_img.jpeg") center/cover no-repeat;
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center;
+}
+
+#antlas-title {
+    display: flex;
+    flex-direction: row;
+    margin: 64px;
+    font-family: "Poppins", sans-serif;
+    line-height: 1;
+
+    background: rgba(0, 131, 190, 0.25);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.5px);
+    -webkit-backdrop-filter: blur(4.5px);
+
+    font-size: 150px;
+    color: rgba(254, 204, 7);
+
+    padding: 16px 32px 16px 32px;
+}
+
+    /* Jump animation for Antlas title */
+    #antlas-title span {
+        display: inline-block;
+        animation: jump 0.5s ease-in-out 1;
+    }
+
+    @keyframes jump {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-24px);
+        }
+    }
+
+    #antlas-title span:nth-child(1) {animation-delay: 0.15s; }
+    #antlas-title span:nth-child(2) {animation-delay: .30s; }
+    #antlas-title span:nth-child(3) {animation-delay: 0.45s; }
+    #antlas-title span:nth-child(4) {animation-delay: 0.60s; }
+    #antlas-title span:nth-child(5) {animation-delay: 0.75s; }
+    #antlas-title span:nth-child(6) {animation-delay: 0.90s; }
+
+
+#create-event-button {
+    /* Format later */
+}
+
+#create-event-button-area button {
+    font-size: 72px;
+    margin: 8px;
+    margin-bottom: 36px;
+
+    background-color: rgb(37, 87, 153);
+    border: none;
+    border-radius: 8px;
+    font-family: "Poppins", sans-serif;
+
+    transition: background-color 0.3s ease; 
+}
+
+#create-event-button-area button:hover {
+    background-color: rgb(0, 131, 190);
 }
 
 /* Main content area(where events show up) */
+#main-content-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
     /* Buttons sub-area(social/fun, educational, fitness, general) */
-    p {
-        color: white;
+    #button-sub-area {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 60%;
+        border-radius: 32px;
+        margin-top: 48px;
+        
+        background-color: rgb(0, 34, 68);
+    }
+
+    #button-sub-area button {
+        font-size: 36px;
+        margin: 16px;
+
+        background-color: rgb(37, 87, 153);
+        border: none;
+        border-radius: 8px;
+        font-family: "Poppins", sans-serif;
+
+        transition: background-color 0.3s ease; 
+    }
+
+    #button-sub-area button:hover {
+        background-color: rgb(0, 131, 190);
     }
 
     /* Events sub-area */
