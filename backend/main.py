@@ -5,7 +5,9 @@ from typing import List
 from database import get_connection, create_tables
 
 app = FastAPI()
+create_tables()
 
+# Set up CORS for the backend server
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -14,8 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-create_tables()
-
+# Event class object, inherit from BaseModl for pydantic type checking/conversion
 class Event(BaseModel):
     id:  int | None = None
     name: str
@@ -26,29 +27,22 @@ class Event(BaseModel):
 
 events_db = []
 
-# Adds 1 event to events_db
+# Adds an event to the SQLite database, attributes must be passed in
 @app.post("/events", response_model=Event)
 def create_event(new_event: Event):
     connection = get_connection()
     cursor = connection.cursor()
     cursor.execute(
         "INSERT INTO events (name, host, time, location) VALUES (?, ?, ?, ?)",
-        (event.name, event.host, event.time, event.location),
+        (new_event.name, new_event.host, new_event.time, new_event.location),
     )
     connection.commit()
-    event.id = cursor.lastrowid
+    new_event.id = cursor.lastrowid
     connection.close()
-    return event
-
-def create_event(new_event: Event):
-    for event_index in events_db:
-        if event_index.id == new_event.id:
-            raise HTTPException(status_code=400, detail="Event with this ID already exists")
-    events_db.append(new_event)
 
     return new_event
 
-# Remove 1 event to events_db
+# Remove an event from events_db
 @app.post("/events{event_id}")
 def remove_event(host: str, event_id:int):
     for i, event in enumerate(events_db):
@@ -58,6 +52,7 @@ def remove_event(host: str, event_id:int):
             else:
                 raise HTTPException(status_code=403, detail = "Must be host to cancel")
             return {"message": "Event canceled"}
+        
     raise HTTPSException(status_code=404, detail = "Event not found")
 
 
@@ -73,7 +68,9 @@ def join_event(event_id: int, attendee: str):
         if event.id == event_id:
             if attendee not in event.attendees:
                 event.attendees.append(attendee)
+
             return event
+        
     raise HTTPException(status_code=404, detail="Event not found")
 
 # Removes an attendee from specific event in events_db
@@ -83,6 +80,8 @@ def leave_event(event_id: int, attendee: str):
         if event.id == event_id:
             if attendee in event.attendees:
                 event.attendees.remove(attendee)
+
             return event
+        
     raise HTTPException(status_code=404, detail="Event not found")
 
