@@ -11,7 +11,7 @@ body {
     flex-direction: column;
     margin: 0px;
 
-    background-color: lightgray;
+    background-color: whitesmoke;
 }
 
 /* Header/navigation area */
@@ -62,9 +62,20 @@ body {
 }
 
 /* Hero area */
-h1{
-    font-size: 70px;
-    color: white
+#hero-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#antlas-title {
+    display: flex;
+    flex-direction: row;
+    margin: 8px;
+    font-family: "Poppins", sans-serif;
+
+    font-size: 150px;
+    color: rgba(254, 204, 7);
 }
 
 /* Main content area(where events show up) */
