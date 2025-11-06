@@ -94,12 +94,16 @@ body {
         width: 85%;
         border-radius: 32px;
         
-        background-color: lightskyblue;
+        background-color: rgb(0, 34, 68);
     }
 
     #button-sub-area button {
         font-size: 36px;
         margin: 8px;
+
+        background-color: rgb(37, 87, 153);
+        border: none;
+        border-radius: 8px;
     }
 
     /* Events sub-area */
