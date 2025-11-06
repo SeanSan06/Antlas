@@ -90,7 +90,7 @@ body {
 #hero-area {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 10vh;
     padding: 2rem;
@@ -113,7 +113,7 @@ body {
 #antlas-title {
     display: flex;
     flex-direction: row;
-    margin: 64px;
+    margin: 32px;
     font-family: "Poppins", sans-serif;
     line-height: 1;
 
@@ -157,28 +157,6 @@ body {
         }
     }
 
-
-#create-event-button {
-    /* Format later */
-}
-
-#create-event-button-area button {
-    font-size: 72px;
-    margin: 8px;
-    margin-bottom: 36px;
-
-    background-color: rgb(37, 87, 153);
-    border: none;
-    border-radius: 8px;
-    font-family: "Poppins", sans-serif;
-
-    transition: background-color 0.3s ease; 
-}
-
-#create-event-button-area button:hover {
-    background-color: rgb(0, 131, 190);
-}
-
 /* Main content area(where events show up) */
 #main-content-area {
     display: flex;
@@ -211,7 +189,7 @@ body {
         border-radius: 8px;
         font-family: "Poppins", sans-serif;
 
-        transition: background-color 0.3s ease; 
+        transition: background-color 0.3s ease;
     }
 
         @media (max-width: 480px) {
