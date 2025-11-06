@@ -3,6 +3,7 @@
     width: 80%;
     border-radius: 10px;
     margin: 32px;
+    box-shadow: 0 4px 8px rgba(136, 136, 136, 0.75);
 }
 
 @media (max-width: 600px) {
