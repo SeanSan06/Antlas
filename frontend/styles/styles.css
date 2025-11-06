@@ -79,9 +79,27 @@ body {
 }
 
 /* Main content area(where events show up) */
+#main-content-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
     /* Buttons sub-area(social/fun, educational, fitness, general) */
-    p {
-        color: white;
+    #button-sub-area {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 85%;
+        border-radius: 32px;
+        
+        background-color: lightskyblue;
+    }
+
+    #button-sub-area button {
+        font-size: 36px;
+        margin: 8px;
     }
 
     /* Events sub-area */
