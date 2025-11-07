@@ -15,6 +15,22 @@ body {
     background-color: white;
 }
 
+/* Nav bar area */
+#tabs-nav-bar #home a {
+    text-decoration: none;
+    color: white;
+}
+
+#tabs-nav-bar #events a {
+    text-decoration: none;
+    color: white;
+}
+
+#tabs-nav-bar #about a {
+    text-decoration: underline;
+    color: white;
+}
+
 /* Hero area */
 #about-us-title {
     display: flex;
