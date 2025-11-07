@@ -234,6 +234,14 @@ body {
     max-width: 500px;
 }
 
-
-
+#input-box-area textarea {
+    resize: none;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    outline: none;
+}
 
