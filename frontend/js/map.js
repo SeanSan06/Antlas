@@ -22,34 +22,97 @@ function initializeMap() {
   return map;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  const allEvents = fetch('http://localhost:8000/event');
+async function fetchAllEvents() {
+  const res = await fetch('http://localhost:8000/events');
+  const events = await res.json();
+  console.log(events);
+  return events;
+}
 
-  // parse events into objects
-  // for each event:
-    // create marker w/ overrided click event
-    // add to array
-  
+async function fetchEventById(id) {
+  const res = await fetch(`http://localhost:8000/events/${id}`);
+  const event = await res.json();
+  console.log(event);
+  return event;
+}
+
+function showEventInfo(event) {
+  const overlay = document.querySelector('#overlay');
+  const eventInfo = document.querySelector('#event-info');
+  overlay.classList.add('active');
+  eventInfo.classList.add('active');
+  eventInfo.innerHTML = `
+  `;
+  document.querySelector('#close-info').addEventListener('click', hideEventInfo);
+}
+
+function hideEventInfo() {
+  const overlay = document.querySelector('#overlay');
+  const eventInfo = document.querySelector('#event-info');
+  overlay.classList.remove('active');
+  eventInfo.classList.remove('active');
+}
+
+function showEventSubmit(coords) {
+  const overlay = document.querySelector('#overlay');
+  const eventForm = document.querySelector('#event-form');
+  overlay.classList.add('active');
+  eventForm.classList.add('active');
+}
+
+function hideEventSubmit() {
+  const overlay = document.querySelector('#overlay');
+  const eventForm = document.querySelector('#event-form');
+  overlay.classList.remove('active');
+  eventForm.classList.remove('active');
+}
+
+document.addEventListener('DOMContentLoaded', async function() {
   // initialize map
   const map = initializeMap();
+  const allEvents = fetchAllEvents();
 
-  // for each marker:
-    // add to map
+  // parse events into objects
+  allEvents.forEach(event => {
+    let marker = L.marker(JSON.parse(event.coords));
+    marker.on('click', (e) => {
+      showEventInfo(event.id);
+    });
+    marker.addTo(map);
+    console.log(`Event ${event.id} loaded!`);
+  });
 
-  // handle map events:
-    // on double click:
-      // create marker
-      // invoke popup
-      // if popup form submit:
-        // create new event
-        // override marker w/ click event
-        // close popup
-      // else if click outside:
-        // delete marker
-        // close popup
+  let marker = null;
   
-  map.on('dblclick', function(e) {
-    console.log('hi');
-    L.marker(e.latlng).addTo(map);
+  map.on('dblclick', (e) => {
+    console.log('event creation started...');
+    marker = L.marker(e.latlng).addTo(map);
+    showEventSubmit(e.latlng);
+  });
+
+  document.querySelector('#event-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    const res = await fetch('http://localhost:8000/events', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    const event = await res.json();
+    hideEventSubmit();
+    console.log(`Event ${event.id} created!`);
+  });
+
+  document.querySelector('#event-form-cancel').addEventListener('click', (e) => {
+    if (marker)
+    {
+      map.removeLayer(marker);
+    }
+    console.log('event creation cancelled');
+  });
+
+  document.querySelector('#event-info-close').addEventListener('click', (e) => {
+    hideEventInfo();
   });
 });

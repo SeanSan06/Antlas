@@ -4,17 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Antlas</title>
-
-  <!-- Custom Font -->
-  <link href = "https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-
-  <!--
-  <link rel = "stylesheet" href="../styles/styles.css">
-  <link rel="stylesheet" href="../styles/openstreetmap.css">
-  -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      transition: background 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+
+    .side-popup {
+      position: fixed;
+      top: 0;
+      right: -400px; /* initially hidden off-screen */
+      width: 300px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      transition: right 0.3s ease;
+      z-index: 20;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .side-popup.active {
+      right: 0;
+    }
+
+    .content {
+      padding: 50px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
+  <div id="overlay"></div>
+  <div id="event-info"></div>
+  <div id="event-form">
+    <h2>Side Popup</h2>
+  </div>
   <div id="map" style="width: 100%; height: 100%; position: absolute; margin: 0px; padding: 0px;"></div>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="../js/map.js"></script>
