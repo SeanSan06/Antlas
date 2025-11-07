@@ -39,16 +39,47 @@ body {
     margin: 16px;
 
     font-size: 128px;
-    color: black;
+    color: rgb(254, 204, 7);
 }
+
+    /* Jump animation for About Us title */
+    #about-us-title span {
+        display: inline-block;
+        animation: jump 0.5s ease-in-out 1;
+    }
+
+    @keyframes jump {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-24px);
+        }
+    }
+
+    #about-us-title span:nth-child(1) {animation-delay: 0.15s; }
+    #about-us-title span:nth-child(2) {animation-delay: .30s; }
+    #about-us-title span:nth-child(3) {animation-delay: 0.45s; }
+    #about-us-title span:nth-child(4) {animation-delay: 0.60s; }
+    #about-us-title span:nth-child(5) {animation-delay: 0.60s; }
+    #about-us-title span:nth-child(6) {animation-delay: 0.75s; }
+    #about-us-title span:nth-child(7) {animation-delay: 0.90s; }
+    #about-us-title span:nth-child(8) {animation-delay: 1.05s; }
+
+    @media (max-width: 480px) {
+        #about-us-title {
+            font-size: clamp(2rem, 12vw, 5rem);
+        }
+    }
 
 #goal-paragraph {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 16px;
+    width: 50%;
+    margin: 16px auto;
     text-align: center;
 
     font-size: 32px;
-    color: black;
+    color: rgb(37, 87, 153);
 }
