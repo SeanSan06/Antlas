@@ -21,6 +21,7 @@ body {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    min-height: 80px;
 
     background-color: rgb(37, 87, 153);
     border: 1;
@@ -92,12 +93,12 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 10vh;
+    /* gap: 10vh; */
     padding: 2rem;
     text-align: center;
     min-height: 60vh;
 
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgb(255, 255, 255)), url("../images/temp_park_img.jpeg") center/cover no-repeat;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgb(255, 255, 255)), url("../images/aldrich-park-3.jpg") center/cover no-repeat;
     background-repeat: no-repeat; 
     background-size: cover; 
     background-position: center;

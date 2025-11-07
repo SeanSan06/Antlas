@@ -1,6 +1,6 @@
 /* HTML and Body area */
 html {
-    height: 100%;
+    min-height: 100%;
 
     background-color: black;
     font-family: "Poppins", sans-serif;
@@ -8,11 +8,11 @@ html {
 
 body {
     display: flex;
-    height: 100%;
     flex-direction: column;
     margin: 0px;
+    min-height: 100vh;
 
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 /* Header/navigation area */
@@ -21,6 +21,7 @@ body {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    min-height: 80px;
 
     background-color: rgb(37, 87, 153);
     border: 1;
@@ -35,6 +36,7 @@ body {
 
     color: rgb(255, 255, 255);
     font-size: 32px;
+    font-family: "Poppins", sans-serif;
 }
 
 #tabs-nav-bar {
@@ -45,10 +47,11 @@ body {
 
     color: black;
     font-size: 32px;
+    font-family: "Poppins", sans-serif;
 }
 
 #tabs-nav-bar #home a {
-    text-decoration: none;
+    text-decoration: underline;
     color: white;
 }
 
@@ -58,9 +61,32 @@ body {
 }
 
 #tabs-nav-bar #about a {
-    text-decoration: underline;
+    text-decoration: none;
     color: white;
 }
+
+    @media (max-width: 750px) {
+        #header-nav-area {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        #tabs-nav-bar {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        #tabs-nav-bar p {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #tabs-nav-bar p {
+            font-size: 1.2rem;
+        }
+    }
 
 /* Hero area */
 #about-us-title {
@@ -68,7 +94,6 @@ body {
     flex-direction: row;
     justify-content: center;
     margin: 16px;
-    
 
     font-size: 128px;
     color: black;
