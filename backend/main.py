@@ -1,6 +1,9 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from pathlib import Path
 from typing import List
 from database import create_tables, get_connection
 
@@ -47,8 +50,8 @@ def create_event(new_event: Event):
 def get_specific_event(event_id: int):
     connection = get_connection()
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM events WHERE id = ?", (event_id))
-    rows = cursor.fetchone()
+    cursor.execute("SELECT * FROM events WHERE id = ?", (event_id,))
+    row = cursor.fetchone()
     connection.close()
 
     if row is None:
@@ -59,7 +62,7 @@ def get_specific_event(event_id: int):
         "name": row[1],
         "host": row[2],
         "time": row[3],
-        "name": row[4]
+        "location": row[4]
     }
 
 # Returns all events in events_db
@@ -78,9 +81,26 @@ def get_all_events():
             "name": row[1],
             "host": row[2],
             "time": row[3],
-            "name": row[4]
+            "location": row[4]
         })
 
     return all_events
 
 """ Serves up each page on the website to the user as needed """
+BASE_DIR = Path(__file__).resolve().parent
+ROOT_DIR = BASE_DIR.parent
+
+app.mount("/static", StaticFiles(directory=ROOT_DIR / "frontend"), name="static")
+
+@app.get("/")
+def serve_home():
+    return FileResponse(ROOT_DIR / "frontend" / "html" / "index.html")
+
+@app.get("/about")
+def serve_about():
+    return FileResponse(ROOT_DIR / "frontend" / "html" / "about.html")
+
+@app.get("/map")
+def serve_map():
+    return FileResponse(ROOT_DIR / "frontend" / "html" / "map.html")
+
