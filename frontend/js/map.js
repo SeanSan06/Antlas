@@ -43,10 +43,10 @@ function showEventInfo(event) {
   overlay.classList.add('active');
   eventInfo.classList.add('active');
   eventInfo.innerHTML = `
-  <button id="close-info">✖</button>
   <h2>${event.name}</h2>
-  <p><b>Host:</b> ${event.host}</p>
-  <p><b>Time:</b> ${event.time}</p>
+  <p class="specific-event-information"><b>Host:</b> ${event.host}</p>
+  <p class="specific-event-information"><b>Time:</b> ${event.time}</p>
+  <button id="close-info">✖</button>
   `;
   document.querySelector('#close-info').addEventListener('click', hideEventInfo);
 }

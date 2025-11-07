@@ -15,40 +15,7 @@ body {
     background-color: white;
 }
 
-/* Header/navigation area */
-#header-nav-area {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-
-    background-color: rgb(37, 87, 153);
-    border: 1;
-    box-shadow: 0 4px 8px rgba(37, 87, 153, 0.75);
-}
-
-#header-nav-area p {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    margin: 8px;
-
-    color: rgb(255, 255, 255);
-    font-size: 32px;
-    font-family: "Poppins", sans-serif;
-}
-
-#tabs-nav-bar {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    margin: 8px;
-
-    color: black;
-    font-size: 32px;
-    font-family: "Poppins", sans-serif;
-}
-
+/* Nav bar area */
 #tabs-nav-bar #home a {
     text-decoration: underline;
     color: white;
@@ -64,40 +31,19 @@ body {
     color: white;
 }
 
-    @media (max-width: 750px) {
-        #header-nav-area {
-            flex-direction: column;
-            gap: 1rem;
-            padding: 1rem;
-        }
-
-        #tabs-nav-bar {
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        #tabs-nav-bar p {
-            font-size: 1.5rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        #tabs-nav-bar p {
-            font-size: 1.2rem;
-        }
-    }
 /* Hero area */
 #hero-area {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
-    gap: 10vh;
+    /* gap: 10vh; */
     padding: 2rem;
     text-align: center;
-    min-height: 60vh;
+    min-height: 80vh;
+    flex-grow: 1;
 
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgb(255, 255, 255)), url("../images/temp_park_img.jpeg") center/cover no-repeat;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgb(255, 255, 255)), url("../images/aldrich-park-2.jpg") center/cover no-repeat;
     background-repeat: no-repeat; 
     background-size: cover; 
     background-position: center;
@@ -171,7 +117,7 @@ body {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        width: 60%;
+        width: 25%;
         max-width: 600px;
         margin: 2rem auto 0 auto;
         border-radius: 32px;
@@ -185,6 +131,7 @@ body {
         font-size: clamp(1rem, 2vw, 2rem);
         padding: 0.5rem 1rem;
         margin: 16px;
+        cursor: pointer;
 
         background-color: rgb(37, 87, 153);
         box-shadow: 0 4px 8px rgba(14, 4, 105, 0.75);
@@ -210,8 +157,6 @@ body {
     #button-sub-area button:hover {
         background-color: rgb(0, 131, 190);
     }
-
-/* Open Street Map(On sperate css file) */
 
 /* Create event form text box area */
 #input-box-area {
